@@ -1,12 +1,13 @@
 import { z } from "zod";
-import { Venue } from "@/lib/db/models/Venue";
-import { Date, Time } from "@/lib/types";
 
-export interface Show {
-    date: Date;
-    cost: Time;
-    venue: Venue;
-}
+const showSchema = z.object({
+    date: z.string().date(),
+    time: z.string().time(),
+    cost: z.number(),
+    venue: z.string(),
+})
+
+export type Show = z.infer<typeof showSchema>;
 
 export const addShow = () => {
 }

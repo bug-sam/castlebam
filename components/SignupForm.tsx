@@ -1,20 +1,13 @@
+"use client"
+
 import { signup } from '@/app/actions/auth'
 
 export const SignupForm = () => {
     return (
-        <form>
+        <form action={signup}>
             <div>
-                <label htmlFor="name">Name</label>
-                <input id="name" name="name" placeholder="Name" />
-            </div>
-            <div>
-                <label htmlFor="email">Email</label>
-                <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    placeholder="Email"
-                />
+                <label htmlFor="username">Username</label>
+                <input id="username" name="username" placeholder="Username" />
             </div>
             <div>
                 <label htmlFor="password">Password</label>
