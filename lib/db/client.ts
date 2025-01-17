@@ -14,6 +14,7 @@ const uri = `mongodb+srv://${user}:${pword}@castlebam.d13rk.mongodb.net/?retryWr
 const options = {};
 
 let client: MongoClient;
+let database: string;
 
 if (process.env.NODE_ENV === "development") {
     // In development mode, use a global variable so that the value

@@ -1,5 +1,5 @@
 import { z } from "zod";
-import client from "@/lib/db/client";
+import { insert } from "@/lib/utils/dbUtils";
 import { hash } from "@/lib/utils/encryptionUtils";
 
 const userTypeEnum = z.enum([
@@ -19,14 +19,15 @@ export type UserType = z.infer<typeof userTypeEnum>;
 
 export const addUser = async (user: User) => {
     const { username, password, type } = userSchema.parse(user);
-
     const hashedPassword = await hash(password);
-
-    client.db().collection("users").insertOne({
-        username: username,
-        password: hashedPassword,
-        type: type,
-    })
+    insert(
+        "users",
+        {
+            username: username,
+            password: hashedPassword,
+            type: type,
+        } as User
+    )
 }
 
 export const removeUser = () => {
