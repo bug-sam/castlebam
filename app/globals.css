@@ -15,16 +15,15 @@
 }
 
 body {
-  font-family: 'Comic Sans MS', sans-serif;
-  background-color: black;
-  color: white;
-  text-shadow: 2px 2px 4px #ff00ff;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: white;
+  color: black; 
+  text-shadow: none;
+  margin: 0;
+  padding: 0;
 }
+
 button img {
-  box-shadow: 0 0 20px 4px #00ff00;
+  box-shadow: 0 0 10px 2px #000000;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-button img:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 40px 8px #ff00ff;
 }
