@@ -1,29 +1,26 @@
-// app/home/page.tsx
-import Image from "next/image";
+import Link from 'next/link';
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/home/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-      </main>
+    <div id="main1">
+
+        <div id="heading">
+            <h2>welcome to castlebam :3</h2>
+        </div>
+
+      <div id="nav-container">
+        <Link href="/about" className="link">about</Link>
+        <Link href="/blog" className="link">venues</Link>
+        <Link href="/photos" className="link">photography</Link>
+        <Link href="/archive" className="link">things i want to remember</Link>
+        <Link href="/music" className="link">music</Link>
+        <Link href="/music" className="link">blog</Link>
+      </div>
+
+      <div id="last_updated">
+        <p>Last updated: January 23 2025 by Dragon</p>
+      </div>
+
     </div>
   );
 }
