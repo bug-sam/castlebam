@@ -15,6 +15,7 @@ const venueTypeEnum = z.enum([
 ]);
 
 const venueSchema = z.object({
+    _id: z.string().optional(),
     name: z.string(),
     location: locationEnum,
     instagram: z.string(),
@@ -30,7 +31,10 @@ export type VenueType = z.infer<typeof venueTypeEnum>;
 
 export type Venue = z.infer<typeof venueSchema>;
 
-export const addVenue = () => {
+export const get = () => {
+}
+
+export const add = () => {
 }
 
 export const removeVenue = () => {

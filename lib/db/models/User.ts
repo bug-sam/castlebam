@@ -8,6 +8,7 @@ const userTypeEnum = z.enum([
 ]);
 
 const userSchema = z.object({
+    _id: z.string().optional(),
     username: z.string(),
     password: z.string(),
     type: userTypeEnum,
