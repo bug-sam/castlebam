@@ -1,19 +1,28 @@
 import { z } from "zod";
 import { insert, getCollection } from "@/lib/utils/dbUtils";
+import { Venue, venueSchema } from "./Venue";
 
-const showSchema = z.object({
+export type Show = z.infer<typeof showSchema>;
+
+export const baseShowSchema = z.object({
     _id: z.string().optional(),
     date: z.string().date(),
     time: z.string().time(),
     cost: z.number(),
-    venue: z.string(),
+    venue_id: z.string(),
     flyer: z.string(),
 })
 
-export type Show = z.infer<typeof showSchema>;
+export const showSchema = baseShowSchema.extend({
+    venue: z.lazy(() => venueSchema).optional(),
+})
 
 export const get = async () => {
-    return await getCollection<Show>("shows");
+    const shows = await getCollection<Show>("shows");
+    const venues = await getCollection<Venue>("venues");
+    return shows.map(show => {
+        show.venue = venues.find(v => v._id === show.venue_id);
+    })
 }
 
 export const add = (show: Show) => {

@@ -1,15 +1,22 @@
-import { useQuery } from "@tanstack/react-query";
+"use client"
 
-const fetchPosts = async () => {
+import { useQuery } from "@tanstack/react-query";
+import { useEffect } from "react";
+
+const fetchShows = async () => {
     const response = await fetch("/api/shows");
     return await response.json();
 };
 
 const Shows = () => {
     const { data, isLoading } = useQuery({
-        queryKey: ["posts-route-handler"],
-        queryFn: fetchPosts,
+        queryKey: ["shows-route-handler"],
+        queryFn: fetchShows,
     });
+
+    useEffect(() => {
+        console.log(data);
+    }, [data]);
 
     return (
         <div>
