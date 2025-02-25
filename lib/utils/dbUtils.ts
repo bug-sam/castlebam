@@ -4,15 +4,18 @@ const getDB = () => process.env.NODE_ENV === "development" ? "dev" : "prod";
 
 export type Table = "users" | "shows" | "venues";
 
-export const insert = async (table: Table, row: any) => {
+export const insert = async (table: Table, row: any): Promise<string> => {
+    let id = "";
     try {
         await client.connect();
-        await client.db(getDB()).collection(table).insertOne(row);
+        const res = await client.db(getDB()).collection(table).insertOne(row);
+        id = res.insertedId.toString();
     } catch (e) {
         console.error(e);
     } finally {
         await client.close();
     }
+    return id;
 }
 
 export const getCollection = async <T>(table: Table): Promise<T[]> => {
