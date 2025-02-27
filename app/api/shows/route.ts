@@ -1,6 +1,6 @@
-import { get } from "@/lib/db/models/Show";
+import { getShows } from "@/lib/db/operations/Show";
 
 export async function GET() {
-    const shows = await get();
+    const shows = await getShows();
     return Response.json(shows);
 }
