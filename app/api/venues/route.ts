@@ -1,6 +1,6 @@
-import { get } from "@/lib/db/models/Venue";
+import { getVenues } from "@/lib/db/operations/Venue";
 
 export async function GET() {
-    const venues = await get();
+    const venues = await getVenues();
     return Response.json(venues);
 }

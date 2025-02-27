@@ -1,11 +1,10 @@
-import { SignupForm } from "@/components/SignupForm";
+import { SignupForm } from "@/components/forms/SignupForm";
 
 const Admin = () => {
     return (
         <div>
             <SignupForm />
         </div>
-
     )
 }
 

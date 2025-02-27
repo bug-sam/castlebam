@@ -1,24 +1,29 @@
 import { z } from "zod";
-import { getCollection, insert } from "@/lib/utils/dbUtils";
-import { baseShowSchema, Show, showSchema } from "./Show";
+import { baseShowSchema } from "./Show";
 
 export type Location = z.infer<typeof locationEnum>;
 export type VenueType = z.infer<typeof venueTypeEnum>;
 export type Venue = z.infer<typeof venueSchema>;
 
-const locationEnum = z.enum([
+export const locationEnum = z.enum([
     "South Philly",
     "West Philly",
+    "Northeast Philly",
+    "North Philly",
     "Temple",
     "South Jersey",
     "Other",
 ]);
 
-const venueTypeEnum = z.enum([
+export const locations = locationEnum.options;
+
+export const venueTypeEnum = z.enum([
     "Bar",
     "DIY Space",
     "House",
 ]);
+
+export const venueTypes = venueTypeEnum.options;
 
 export const venueSchema = z.object({
     _id: z.string().optional(),
@@ -31,23 +36,5 @@ export const venueSchema = z.object({
     defunct: z.boolean(),
     type: venueTypeEnum,
     description: z.string(),
+    accepted: z.boolean(),
 })
-
-export const get = async () => {
-    const shows = await getCollection<Show>("shows");
-    const venues = await getCollection<Venue>("venues");
-    return venues.map(venue => {
-        venue.shows = shows.filter(s => venue.show_ids?.includes(s._id!));
-    })
-}
-
-export const add = async (venue: Venue) => {
-    const parsedVenue = venueSchema.parse(venue);
-    return await insert("venues", parsedVenue);
-}
-
-export const removeVenue = () => {
-}
-
-export const updateVenue = () => {
-}

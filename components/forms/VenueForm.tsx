@@ -1,8 +1,23 @@
 "use client"
 
 import { submitVenue } from '@/app/actions/venue'
+import { useForm, Controller } from 'react-hook-form'
+import { Dropdown } from '../ui/Dropdown'
+import { venueTypes } from '@/lib/db/models/Venue'
 
-export const SignupForm = () => {
+export const SubmitVenueForm = () => {
+    const { control } = useForm({
+        defaultValues: {
+            name: "",
+            instagram: "",
+            location: "",
+            isAllAges: true,
+            isDefunct: false,
+            venueType: "",
+            description: "",
+        }
+    })
+
     return (
         <form action={submitVenue}>
             <div>
@@ -25,15 +40,22 @@ export const SignupForm = () => {
                 <label htmlFor="isDefunct">Is this venue defunct?</label>
                 <input id="isDefunct" name="isDefunct" type="" />
             </div>
-            <div>
-                <label htmlFor="venueType">What type of venue is this?</label>
-                <input id="venueType" name="venueType" type="" />
-            </div>
+            <Controller
+                control={control}
+                name="venueType"
+                render={({field: { onChange }}) => (
+                    <Dropdown
+                        label="What kind of Venue is this?"
+                        options={venueTypes}
+                        onSelect={onChange}
+                    />
+                )}
+            />
             <div>
                 <label htmlFor="description">Write a short description for this venue:</label>
                 <input id="description" name="description" type="text" />
             </div>
-            <button type="submit">Sign Up</button>
+            <button type="submit">Submit</button>
         </form>
     );
 }
