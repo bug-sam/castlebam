@@ -1,55 +1,42 @@
 "use client"
 
 import { submitVenue } from '@/app/actions/venue'
-import { useForm, Controller } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { Dropdown } from '../ui/Dropdown'
-import { venueTypes } from '@/lib/db/models/Venue'
+import { Venue, locations, venueTypes } from '@/lib/db/models/Venue'
 
 export const SubmitVenueForm = () => {
-    const { control } = useForm({
+    const { register } = useForm({
         defaultValues: {
             name: "",
+            type: "DIY Space",
+            location: "South Philly",
             instagram: "",
-            location: "",
-            isAllAges: true,
-            isDefunct: false,
-            venueType: "",
+            allAges: true,
+            defunct: false,
             description: "",
-        }
+        } as Venue
     })
 
     return (
         <form action={submitVenue}>
             <div>
-                <label htmlFor="name">Venue Name</label>
+                <label htmlFor="name">What is the name of the Venue?</label>
                 <input id="name" name="name" placeholder="" />
             </div>
             <div>
-                <label htmlFor="instagram">Instagram</label>
+                <label htmlFor="instagram">What is the venue's instagram?</label>
                 <input id="instagram" name="instagram" type="" />
             </div>
-            <div>
-                <label htmlFor="location">Location</label>
-                <input id="location" name="location" type="" />
-            </div>
-            <div>
-                <label htmlFor="isAllAges">Is this venue an all ages venue?</label>
-                <input id="isAllAges" name="isAllAges" type="" />
-            </div>
-            <div>
-                <label htmlFor="isDefunct">Is this venue defunct?</label>
-                <input id="isDefunct" name="isDefunct" type="" />
-            </div>
-            <Controller
-                control={control}
-                name="venueType"
-                render={({field: { onChange }}) => (
-                    <Dropdown
-                        label="What kind of Venue is this?"
-                        options={venueTypes}
-                        onSelect={onChange}
-                    />
-                )}
+            <Dropdown
+                label="What kind of Venue is this?"
+                options={venueTypes}
+                {...register("type")}
+            />
+            <Dropdown
+                label="Where is this venue located?"
+                options={locations}
+                {...register("location")}
             />
             <div>
                 <label htmlFor="description">Write a short description for this venue:</label>

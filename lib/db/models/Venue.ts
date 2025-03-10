@@ -28,13 +28,13 @@ export const venueTypes = venueTypeEnum.options;
 export const venueSchema = z.object({
     _id: z.string().optional(),
     name: z.string(),
+    type: venueTypeEnum,
     location: locationEnum,
     instagram: z.string(),
-    show_ids: z.array(z.string()).optional(),
-    shows: z.array(z.lazy(() => baseShowSchema)).optional(),
     allAges: z.boolean(),
     defunct: z.boolean(),
-    type: venueTypeEnum,
     description: z.string(),
-    accepted: z.boolean(),
+    accepted: z.boolean().optional(),
+    show_ids: z.array(z.string()).optional(),
+    shows: z.array(z.lazy(() => baseShowSchema)).optional(),
 })
