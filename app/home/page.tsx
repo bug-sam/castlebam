@@ -18,7 +18,7 @@ export default function Home() {
       </div>
 
       <div id="last_updated">
-        <p>Last updated: January 23 2025 by Dragon</p>
+        <p>Last updated: March 25 2025 by Dragon</p>
       </div>
 
     </div>
