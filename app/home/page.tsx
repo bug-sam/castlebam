@@ -11,10 +11,10 @@ export default function Home() {
       <div id="nav-container">
         <Link href="/about" className="link">about</Link>
         <Link href="/blog" className="link">venues</Link>
-        <Link href="/photos" className="link">photography</Link>
-        <Link href="/archive" className="link">things i want to remember</Link>
-        <Link href="/music" className="link">music</Link>
+        <Link href="/photos" className="link">shows</Link>
+        <Link href="/music" className="link">messageboard</Link>
         <Link href="/music" className="link">blog</Link>
+        <Link href="/archive" className="link">submissions</Link>
       </div>
 
       <div id="last_updated">
