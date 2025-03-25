@@ -24,7 +24,7 @@ export default function LandingPage() {
           />
         </button> */}
       <button onClick={handleEnter} className="cursor-pointer">
-        <a href="/" className="imgtxt">
+          <a className="imgtxt">
           <img src="castleBamFirst.png" alt="Click to Enter"/>
           <span>enter</span>
         </a>
