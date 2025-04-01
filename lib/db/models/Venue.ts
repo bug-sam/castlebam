@@ -1,30 +1,40 @@
-export type Location = 
-    "South Philly" |
-    "West Philly" |
-    "Temple" |
-    "South Jersey" |
-    "Other";
+import { z } from "zod";
+import { baseShowSchema } from "./Show";
 
-export type VenueType = 
-    "Bar" |
-    "DIY Space" |
-    "House";
+export type Location = z.infer<typeof locationEnum>;
+export type VenueType = z.infer<typeof venueTypeEnum>;
+export type Venue = z.infer<typeof venueSchema>;
 
-export interface Venue {
-    name: string;
-    location: Location;
-    instagram: string;
-    allAges: boolean;
-    defunct: boolean;
-    type: VenueType;
-    description: string;
-}
+export const locationEnum = z.enum([
+    "South Philly",
+    "West Philly",
+    "Northeast Philly",
+    "North Philly",
+    "Temple",
+    "South Jersey",
+    "Other",
+]);
 
-export const addVenue = () => {
-}
+export const locations = locationEnum.options;
 
-export const removeVenue = () => {
-}
+export const venueTypeEnum = z.enum([
+    "Bar",
+    "DIY Space",
+    "House",
+]);
 
-export const updateVenue = () => {
-}
+export const venueTypes = venueTypeEnum.options;
+
+export const venueSchema = z.object({
+    _id: z.string().optional(),
+    name: z.string(),
+    location: locationEnum,
+    instagram: z.string(),
+    show_ids: z.array(z.string()).optional(),
+    shows: z.array(z.lazy(() => baseShowSchema)).optional(),
+    allAges: z.boolean(),
+    defunct: z.boolean(),
+    type: venueTypeEnum,
+    description: z.string(),
+    accepted: z.boolean(),
+})

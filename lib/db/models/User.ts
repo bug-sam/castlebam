@@ -1,13 +1,16 @@
-export interface User {
-    username: string;
-    password: string;
-}
+import { z } from "zod";
 
-export const addUser = () => {
-}
+export type User = z.infer<typeof userSchema>;
+export type UserType = z.infer<typeof userTypeEnum>;
 
-export const removeUser = () => {
-}
+const userTypeEnum = z.enum([
+    "admin",
+    "regular",
+]);
 
-export const updateUser = () => {
-}
+export const userSchema = z.object({
+    _id: z.string().optional(),
+    username: z.string(),
+    password: z.string(),
+    type: userTypeEnum,
+});

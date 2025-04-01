@@ -1,18 +1,18 @@
 import { z } from "zod";
-import { Venue } from "@/lib/db/models/Venue";
-import { Date, Time } from "@/lib/types";
+import { venueSchema } from "./Venue";
 
-export interface Show {
-    date: Date;
-    cost: Time;
-    venue: Venue;
-}
+export type Show = z.infer<typeof showSchema>;
 
-export const addShow = () => {
-}
+export const baseShowSchema = z.object({
+    _id: z.string().optional(),
+    date: z.string().date(),
+    time: z.string().time(),
+    cost: z.number(),
+    venue_id: z.string(),
+    flyer: z.string(),
+})
 
-export const removeShow = () => {
-}
+export const showSchema = baseShowSchema.extend({
+    venue: z.lazy(() => venueSchema).optional(),
+})
 
-export const updateShow = () => {
-}
