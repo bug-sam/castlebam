@@ -10,16 +10,15 @@ export default function Home() {
 
       <div id="nav-container">
         <Link href="/about" className="link">about</Link>
+        <Link href="/blog" className="link">venues</Link>
+        <Link href="/shows" className="link">shows</Link>
+        <Link href="/messageboard" className="link">messageboard</Link>
         <Link href="/blog" className="link">blog</Link>
         <Link href="/photos" className="link">photography</Link>
-        <Link href="/archive" className="link">things i want to remember</Link>
-        <Link href="/music" className="link">music</Link>
-        <Link href="/venues" className="link">venues</Link>
-        <Link href="/shows" className="link">shows</Link>
       </div>
 
       <div id="last_updated">
-        <p>Last updated: January 23 2025 by Dragon</p>
+        <p>Last updated: March 25 2025 by Dragon</p>
       </div>
 
     </div>
