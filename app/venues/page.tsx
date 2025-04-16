@@ -25,7 +25,12 @@ const Venues = () => {
 
     return (
         <div>
-            <div>Venues :)</div>
+            <div>Venues :)
+
+            <p>test</p>
+
+
+            </div>
             <SubmitVenueForm></SubmitVenueForm>
         </div>
     )

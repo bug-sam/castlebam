@@ -22,6 +22,7 @@ body {
   background-color: #ffffff;
   margin: 0;
   padding: 0;
+  cursor: url('https://cur.cursors-4u.net/symbols/sym-9/sym869.ani'), url('https://cur.cursors-4u.net/symbols/sym-9/sym869.gif'), auto;
 }
 
 img {
@@ -123,4 +124,63 @@ a.link:active {
   opacity: 1;
 }
 .imgtxt:hover img, .imgtxt:focus img {
+}
+
+.y2k-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #c0c0c0, #ffffff);
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.y2k-form {
+  background: #f0f0f0;
+  border: 3px double #999;
+  padding: 2rem;
+  box-shadow: 5px 5px 15px #888888;
+  width: 400px;
+  border-radius: 15px;
+  text-align: left;
+}
+
+.y2k-form h2.form-title {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #0033cc;
+  text-shadow: 1px 1px 0 #ffffff;
+}
+
+.y2k-form label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-weight: bold;
+}
+
+.y2k-form input[type="text"],
+.y2k-form input[type="checkbox"],
+.y2k-form input[type="email"],
+.y2k-form input[type="url"] {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border: 2px inset #ccc;
+  background: #fff;
+  font-family: 'Comic Sans MS', cursive;
+}
+
+.y2k-form button {
+  width: 100%;
+  padding: 0.6rem;
+  background: linear-gradient(to bottom, #00ccff, #0066cc);
+  color: white;
+  font-weight: bold;
+  border: 2px outset #0099cc;
+  cursor: pointer;
+  font-family: 'Comic Sans MS', cursive;
+}
+
+.y2k-form button:hover {
+  background: linear-gradient(to bottom, #0066cc, #003399);
 }
