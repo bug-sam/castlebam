@@ -10,7 +10,7 @@ export default function Home() {
 
       <div id="nav-container">
         <Link href="/about" className="link">about</Link>
-        <Link href="/blog" className="link">venues</Link>
+        <Link href="/venues" className="link">venues</Link>
         <Link href="/shows" className="link">shows</Link>
         <Link href="/messageboard" className="link">messageboard</Link>
         <Link href="/blog" className="link">blog</Link>
@@ -18,7 +18,7 @@ export default function Home() {
       </div>
 
       <div id="last_updated">
-        <p>Last updated: March 25 2025 by Dragon</p>
+        <p>Last updated: April 22  2025 by Dragon</p>
       </div>
 
     </div>
