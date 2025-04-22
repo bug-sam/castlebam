@@ -1,6 +1,6 @@
 "use server"
 
-import { addUser } from "@/lib/db/models/User"
+import { addUser } from "@/lib/db/operations/User";
 
 export const signup = async (formData: FormData) => {
     addUser({
