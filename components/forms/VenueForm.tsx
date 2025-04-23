@@ -21,23 +21,23 @@ export const SubmitVenueForm = () => {
     return (
         <form action={submitVenue}>
             <div>
-                <label htmlFor="name">Venue Name</label>
+                <label htmlFor="name">VENUE NAME</label>
                 <input id="name" name="name" placeholder="" />
             </div>
             <div>
-                <label htmlFor="instagram">Instagram</label>
+                <label htmlFor="instagram">INSTAGRAM</label>
                 <input id="instagram" name="instagram" type="" />
             </div>
             <div>
-                <label htmlFor="location">Location</label>
+                <label htmlFor="location">LOCATION</label>
                 <input id="location" name="location" type="" />
             </div>
             <div>
-                <label htmlFor="isAllAges">Is this venue an all ages venue?</label>
+                <label htmlFor="isAllAges">IS THIS VENUE AN ALL AGES VENUE?</label>
                 <input id="isAllAges" name="isAllAges" type="" />
             </div>
             <div>
-                <label htmlFor="isDefunct">Is this venue defunct?</label>
+                <label htmlFor="isDefunct">IS THIS VENUE DEFUNCT?</label>
                 <input id="isDefunct" name="isDefunct" type="" />
             </div>
             <Controller
@@ -45,14 +45,14 @@ export const SubmitVenueForm = () => {
                 name="venueType"
                 render={({field: { onChange }}) => (
                     <Dropdown
-                        label="What kind of Venue is this?"
+                        label="TYPE OF VENUE?"
                         options={venueTypes}
                         onSelect={onChange}
                     />
                 )}
             />
             <div>
-                <label htmlFor="description">Write a short description for this venue:</label>
+                <label htmlFor="description">WRITE A SHORT DESCRIPTION OF THE VENUE:</label>
                 <input id="description" name="description" type="text" />
             </div>
             <button type="submit">Submit</button>
