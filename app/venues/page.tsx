@@ -71,7 +71,7 @@ const Venues = () => {
                 className="rock-button"
                 onClick={() => toggleVenue(venue.id)}
               >
-                <img src="rock.png" alt="Venue Rock" />
+                <img src="rock.png"/>
               </button>
 
               {/* Venue Details */}
