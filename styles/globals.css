@@ -14,11 +14,14 @@
   }
 }
 
-* {
-  font-family: courier, monospace;
+@font-face {
+  font-family: 'VCR OSD Mono';
+  src: url('/fonts/VCR_OSD_MONO_1.001.woff2') format('woff2'),
+       url('/fonts/VCR_OSD_MONO_1.001.woff') format('woff');
 }
 
 body {
+  font-family: 'VCR OSD Mono', monospace;
   background-color: #ffffff;
   margin: 0;
   padding: 0;
@@ -30,11 +33,11 @@ img {
 
 /* Main containers */
 #main1 {
-  font-size: 12px;
+  font-size: 40px;
   text-align: left;
   margin: 0 auto;
-  width: 600px;
-  height: 500px;
+  width: 95%;
+  height: 100%;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -42,26 +45,19 @@ img {
   transform: translate(-50%, -50%);
 }
 
-#heading{
-  text-align: center;
-  background-color: navajowhite;
+#main2{
+  font-size: 30px;
+  margin-top: 30px;
 }
 
-#nav-container {
-  font-size: 12px;
-  text-align: center;
-  margin: 0 auto;
-  width: 600px;
-  margin-top: 50px;
-  padding: 5px;
-  display: flex;
-  flex-direction: column; /* Stacks links vertically */
-  align-items: center;
+#heading{
+  text-align: left;
+  color: blue;
 }
 
 
 #last_updated {
-  font-size: 11px;
+  font-size: 12px;
   margin: 0 auto;
   text-align: center;
   margin-top: 75px;
@@ -70,33 +66,31 @@ img {
   width: 198px;
 }
 
+#nav-container{
+  margin-top:10px;
+}
+
 a.link {
   display: inline-block;
-  vertical-align: middle;
-  font-size: 12px;
+  color: white;
+  background-color: red;
+  vertical-align: left;
+  font-size: 40px;
   padding: 5px;
+  width: auto; /* Ensure it's not taking up extra width */
 }
 
 a.link:link {
-  color: black;
-  text-decoration: none;
-}
-
-a.link:visited {
-  color: red;
+  color: white;
+  margin-right: 5px;;
   text-decoration: none;
 }
 
 a.link:hover {
-  color: red;
+  color: black;
   text-decoration: none;
-  -webkit-transform: scale(1.2); 
-  transform: scale(1.2);
-}
-
-a.link:active {
-  color: red;
-  text-decoration: none;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .imgtxt {
@@ -114,13 +108,150 @@ a.link:active {
   z-index: 99;
   font-size: 2.5rem;
   color: #FFF;
-  filter: drop-shadow(1px 1px 0 black) 
-    drop-shadow(-1px 1px 0 black)
-    drop-shadow(1px -1px 0 black)
-    drop-shadow(-1px -1px 0 black);
 }
 .imgtxt:hover span, .imgtxt:focus span {
   opacity: 1;
 }
-.imgtxt:hover img, .imgtxt:focus img {
+
+.imgtxt {
+  margin-top: 30%;
+  border: none;
+}
+
+form {
+  font-family: monospace;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  width: 75vw;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+form label {
+  font-size: 14px;
+}
+
+form input,
+form textarea,
+form select {
+  border: 1px solid black;
+  background: none;
+  padding: 6px;
+  font-family: inherit;
+  font-size: 14px;
+  width: 100%;
+}
+
+input#name {
+  border-color: red;
+  color: red;
+}
+
+input#instagram {
+  border-color: blue;
+  color: blue;
+}
+
+input#location {
+  border-color: green;
+  color: green;
+}
+
+input#isAllAges {
+  border-color: purple;
+  accent-color: purple;
+}
+
+input#isDefunct {
+  border-color: orange;
+  accent-color: orange;
+}
+
+input#description {
+  border-color: black;
+  color: black;
+}
+
+button {
+  border: 1px solid black;
+  padding: 8px 12px;
+  background: none;
+  font-family: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Flexbox Container Class */
+.flex {
+  display: flex;
+  align-items: flex-start; /* Align items to the top */
+  width: 100%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* Custom Gaps */
+.gap-12 {
+  gap: 3rem;
+}
+
+.gap-6 {
+  gap: 1.5rem;
+}
+
+/* Submit Venue Form Section */
+.w-1\/2 {
+  width: 50%;
+}
+
+.w-1\/2.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem; 
+  margin-top: 4rem;
+  margin-left: 24rem; /* push rocks to the right */
+}
+.min-h-\[300px\] {
+  min-height: 300px;
+}
+
+.max-w-xl {
+  max-width: 36rem; 
+}
+
+.rock-button {
+  width: 8rem;
+  height: 8rem;
+  text-align: center;
+  border-radius: 50%;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.rock-button:hover {
+  transform: scale(1.1);
+}
+
+.rock-button img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.venue-details {
+  margin-top: 1rem;
+  padding: 0.75rem; 
+  width: 100%; 
+  border: 1px solid #000;
+  background-color: white;
+  font-size: 0.875rem;
+  text-align: center; 
 }
