@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import { submitVenue } from '@/app/actions/venue'
-import { useForm, Controller } from 'react-hook-form'
-import { Dropdown } from '../ui/Dropdown'
-import { venueTypes } from '@/lib/db/models/Venue'
+import { submitVenue } from "@/app/actions/venue";
+import { useForm, Controller } from "react-hook-form";
+import { Dropdown } from "../ui/Dropdown";
+import { venueTypes } from "@/lib/db/models/Venue";
 
 export const SubmitVenueForm = () => {
     const { control } = useForm({
@@ -15,8 +15,8 @@ export const SubmitVenueForm = () => {
             isDefunct: false,
             venueType: "",
             description: "",
-        }
-    })
+        },
+    });
 
     return (
         <form action={submitVenue}>
@@ -33,7 +33,9 @@ export const SubmitVenueForm = () => {
                 <input id="location" name="location" type="" />
             </div>
             <div>
-                <label htmlFor="isAllAges">IS THIS VENUE AN ALL AGES VENUE?</label>
+                <label htmlFor="isAllAges">
+                    IS THIS VENUE AN ALL AGES VENUE?
+                </label>
                 <input id="isAllAges" name="isAllAges" type="" />
             </div>
             <div>
@@ -43,7 +45,7 @@ export const SubmitVenueForm = () => {
             <Controller
                 control={control}
                 name="venueType"
-                render={({field: { onChange }}) => (
+                render={({ field: { onChange } }) => (
                     <Dropdown
                         label="TYPE OF VENUE?"
                         options={venueTypes}
@@ -52,10 +54,12 @@ export const SubmitVenueForm = () => {
                 )}
             />
             <div>
-                <label htmlFor="description">WRITE A SHORT DESCRIPTION OF THE VENUE:</label>
+                <label htmlFor="description">
+                    WRITE A SHORT DESCRIPTION OF THE VENUE:
+                </label>
                 <input id="description" name="description" type="text" />
             </div>
             <button type="submit">Submit</button>
         </form>
     );
-}
+};

@@ -10,9 +10,8 @@ export const baseShowSchema = z.object({
     cost: z.number(),
     venue_id: z.string(),
     flyer: z.string(),
-})
+});
 
 export const showSchema = baseShowSchema.extend({
     venue: z.lazy(() => venueSchema).optional(),
-})
-
+});

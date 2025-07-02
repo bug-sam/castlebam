@@ -1,4 +1,4 @@
-"use server"
+"use server";
 
 import { addVenue } from "@/lib/db/operations/Venue";
 import { VenueType, Location } from "@/lib/db/models/Venue";
@@ -14,4 +14,4 @@ export const submitVenue = async (formData: FormData) => {
         description: formData.get("description") as string,
         accepted: false,
     });
-}
+};

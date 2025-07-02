@@ -1,4 +1,4 @@
-"use server"
+"use server";
 
 import { addUser } from "@/lib/db/operations/User";
 
@@ -8,7 +8,7 @@ export const signup = async (formData: FormData) => {
         password: formData.get("password") as string,
         type: "regular",
     });
-}
+};
 
 export const signin = async (formData: FormData) => {
     addUser({
@@ -16,4 +16,4 @@ export const signin = async (formData: FormData) => {
         password: formData.get("password") as string,
         type: "regular",
     });
-}
+};
