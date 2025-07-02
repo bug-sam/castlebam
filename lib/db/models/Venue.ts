@@ -17,11 +17,7 @@ export const locationEnum = z.enum([
 
 export const locations = locationEnum.options;
 
-export const venueTypeEnum = z.enum([
-    "Bar",
-    "DIY Space",
-    "House",
-]);
+export const venueTypeEnum = z.enum(["Bar", "DIY Space", "House"]);
 
 export const venueTypes = venueTypeEnum.options;
 
@@ -37,4 +33,4 @@ export const venueSchema = z.object({
     type: venueTypeEnum,
     description: z.string(),
     accepted: z.boolean(),
-})
+});

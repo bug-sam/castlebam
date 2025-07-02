@@ -1,22 +1,21 @@
 services:
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: app
-    restart: always
-    volumes:
-      - ./:/usr/src/app
-    ports:
-      - '3000:3000'
-    depends_on:
-      - db
-  db:
-    container_name: mongo
-    image: mongo
-    restart: always
-    volumes:
-      - ./data:/data/db
-    ports:
-      - '27017:27017'
-
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: app
+        restart: always
+        volumes:
+            - ./:/usr/src/app
+        ports:
+            - "3000:3000"
+        depends_on:
+            - db
+    db:
+        container_name: mongo
+        image: mongo
+        restart: always
+        volumes:
+            - ./data:/data/db
+        ports:
+            - "27017:27017"

@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
 export const SigninForm = () => {
     return (
-        <form action={() => console.log('sign in')}>
+        <form action={() => console.log("sign in")}>
             <div>
                 <label htmlFor="username">Username</label>
                 <input id="username" name="username" placeholder="Username" />
@@ -14,4 +14,4 @@ export const SigninForm = () => {
             <button type="submit">Sign In</button>
         </form>
     );
-}
+};

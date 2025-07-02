@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { signup } from '@/app/actions/auth'
+import { signup } from "@/app/actions/auth";
 
 export const SignupForm = () => {
     return (
@@ -16,4 +16,4 @@ export const SignupForm = () => {
             <button type="submit">Sign Up</button>
         </form>
     );
-}
+};

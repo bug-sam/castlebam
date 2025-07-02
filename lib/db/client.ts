@@ -1,6 +1,6 @@
 import { MongoClient } from "mongodb";
 
-const dev_uri = `mongodb://mongo:27017`
+const dev_uri = `mongodb://mongo:27017`;
 const options = {};
 
 let client: MongoClient;
