@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { submitVenue } from '@/app/actions/venue'
 import { useForm } from 'react-hook-form'
@@ -21,28 +21,45 @@ export const SubmitVenueForm = () => {
     return (
         <form action={submitVenue}>
             <div>
-                <label htmlFor="name">What is the name of the Venue?</label>
+                <label htmlFor="name">VENUE NAME</label>
                 <input id="name" name="name" placeholder="" />
             </div>
             <div>
-                <label htmlFor="instagram">What is the venue's instagram?</label>
+                <label htmlFor="instagram">INSTAGRAM</label>
                 <input id="instagram" name="instagram" type="" />
             </div>
-            <Dropdown
-                label="What kind of Venue is this?"
-                options={venueTypes}
-                {...register("type")}
-            />
-            <Dropdown
-                label="Where is this venue located?"
-                options={locations}
-                {...register("location")}
+            <div>
+                <label htmlFor="location">LOCATION</label>
+                <input id="location" name="location" type="" />
+            </div>
+            <div>
+                <label htmlFor="isAllAges">
+                    IS THIS VENUE AN ALL AGES VENUE?
+                </label>
+                <input id="isAllAges" name="isAllAges" type="" />
+            </div>
+            <div>
+                <label htmlFor="isDefunct">IS THIS VENUE DEFUNCT?</label>
+                <input id="isDefunct" name="isDefunct" type="" />
+            </div>
+            <Controller
+                control={control}
+                name="venueType"
+                render={({ field: { onChange } }) => (
+                    <Dropdown
+                        label="TYPE OF VENUE?"
+                        options={venueTypes}
+                        onSelect={onChange}
+                    />
+                )}
             />
             <div>
-                <label htmlFor="description">Write a short description for this venue:</label>
+                <label htmlFor="description">
+                    WRITE A SHORT DESCRIPTION OF THE VENUE:
+                </label>
                 <input id="description" name="description" type="text" />
             </div>
             <button type="submit">Submit</button>
         </form>
     );
-}
+};

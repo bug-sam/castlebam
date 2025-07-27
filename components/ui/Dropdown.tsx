@@ -1,5 +1,4 @@
 import { ChangeEvent, Ref } from "react"
-import { FieldValues } from "react-hook-form";
 interface DropdownInputProps {
     label: string,
     options: string[],
