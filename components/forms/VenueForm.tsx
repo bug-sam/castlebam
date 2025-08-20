@@ -1,64 +1,42 @@
 "use client";
 
 import { submitVenue } from '@/app/actions/venue'
-import { useForm } from 'react-hook-form'
+import { SubmitHandler, useForm } from 'react-hook-form'
 import { Dropdown } from '../ui/Dropdown'
-import { Venue, locations, venueTypes } from '@/lib/db/models/Venue'
+import { locations, Venue, venueTypes } from '@/lib/db/models/Venue'
+import { TextInput } from '../ui/TextInput';
+import { RadioSelect } from '../ui/RadioSelect';
 
 export const SubmitVenueForm = () => {
-    const { register } = useForm({
-        defaultValues: {
-            name: "",
-            type: "DIY Space",
-            location: "South Philly",
-            instagram: "",
-            allAges: true,
-            defunct: false,
-            description: "",
-        } as Venue
-    })
+  const { register, handleSubmit, formState: { errors }, setValue } = useForm<Venue>();
+
+    const onSubmit: SubmitHandler<Venue> = (data) => {
+        submitVenue(data);
+    }
 
     return (
-        <form action={submitVenue}>
-            <div>
-                <label htmlFor="name">VENUE NAME</label>
-                <input id="name" name="name" placeholder="" />
-            </div>
-            <div>
-                <label htmlFor="instagram">INSTAGRAM</label>
-                <input id="instagram" name="instagram" type="" />
-            </div>
-            <div>
-                <label htmlFor="location">LOCATION</label>
-                <input id="location" name="location" type="" />
-            </div>
-            <div>
-                <label htmlFor="isAllAges">
-                    IS THIS VENUE AN ALL AGES VENUE?
-                </label>
-                <input id="isAllAges" name="isAllAges" type="" />
-            </div>
-            <div>
-                <label htmlFor="isDefunct">IS THIS VENUE DEFUNCT?</label>
-                <input id="isDefunct" name="isDefunct" type="" />
-            </div>
-            <Controller
-                control={control}
-                name="venueType"
-                render={({ field: { onChange } }) => (
-                    <Dropdown
-                        label="TYPE OF VENUE?"
-                        options={venueTypes}
-                        onSelect={onChange}
-                    />
-                )}
+        <form onSubmit={handleSubmit(onSubmit)}>
+            <TextInput label='VENUE NAME' {...register("name", { required: true })} />
+            <TextInput label='INSTAGRAM' {...register("instagram", { required: true })} />
+            <Dropdown label='LOCATION' options={locations} {...register("location", { required: true })} />
+            <RadioSelect
+                label='IS THIS VENUE ALL AGES'
+                options={[{name: "yes", value: true}, {name: "no", value: false}]}
+                setValue={setValue}
+                {...register("allAges", { required: true })}
             />
-            <div>
-                <label htmlFor="description">
-                    WRITE A SHORT DESCRIPTION OF THE VENUE:
-                </label>
-                <input id="description" name="description" type="text" />
-            </div>
+            <RadioSelect
+                label='IS THIS VENUE DEFUNCT'
+                options={[{name: "yes", value: true}, {name: "no", value: false}]}
+                setValue={setValue}
+                {...register("defunct", { required: true })}
+            />
+            <Dropdown
+                label="TYPE OF VENUE?"
+                options={venueTypes}
+                {...register("type", { required: true })}
+            />
+            <TextInput label='WRITE A SHORT DESCRIPTION OF THE VENUE' {...register("description", { required: true })} />
             <button type="submit">Submit</button>
         </form>
     );
