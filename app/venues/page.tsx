@@ -5,7 +5,6 @@
 // admins will have access to the list of submissions and they can accept them if they feel that they should be added to the site
 
 import { SubmitVenueForm } from "@/components/forms/VenueForm";
-import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 
 const fetchVenues = async () => {
@@ -47,11 +46,13 @@ const Venues = () => {
             description: "Used to be incredible. RIP 2018-2023.",
         },
     ];
-    const isLoading = false;
+
     const [openVenueId, setOpenVenueId] = useState<number | null>(null);
+
     const toggleVenue = (id: number) => {
         setOpenVenueId((prev) => (prev === id ? null : id));
     };
+
     useEffect(() => {
         console.log(venues);
     }, [venues]);

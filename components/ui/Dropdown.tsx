@@ -1,11 +1,12 @@
 import React, { ChangeEvent } from "react"
-import { UseFormRegister } from "react-hook-form"
+import { FieldError, UseFormRegister } from "react-hook-form"
 
 
 interface DropdownInputProps {
     name: string;
     label: string;
     options: string[];
+    error?: FieldError;
     initialValue?: string;
     onSelect?: (option: string) => void;
     onChange?: (e: ChangeEvent) => void;
@@ -14,7 +15,7 @@ interface DropdownInputProps {
 export const Dropdown = React.forwardRef<
     HTMLSelectElement,
     DropdownInputProps & ReturnType<UseFormRegister<any>>
->(({ name, label, options, initialValue, onSelect, onChange }: DropdownInputProps, ref) => (
+>(({ name, label, options, error, initialValue, onSelect, onChange }: DropdownInputProps, ref) => (
     <div>
         <label htmlFor="isAllAges">{label}</label>
         <select name={name} defaultValue={initialValue || ""} onChange={onChange} ref={ref}>
@@ -36,5 +37,6 @@ export const Dropdown = React.forwardRef<
                 </option>
             ))}
         </select>
+        {error && <span className="form-error">{error.message}</span>}
     </div>
 ));
