@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { baseShowSchema } from "./Show";
+import { booleanString } from "./common";
 
 export type Location = z.infer<typeof locationEnum>;
 export type VenueType = z.infer<typeof venueTypeEnum>;
@@ -27,8 +28,8 @@ export const venueSchema = z.object({
     type: venueTypeEnum,
     location: locationEnum,
     instagram: z.string(),
-    allAges: z.boolean(),
-    defunct: z.boolean(),
+    allAges: booleanString,
+    defunct: booleanString,
     description: z.string(),
     accepted: z.boolean().optional(),
     show_ids: z.array(z.string()).optional(),
