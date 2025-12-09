@@ -1,7 +1,7 @@
 "use client";
 
 import { submitVenue } from '@/app/actions/venue'
-import { FieldError, FieldErrors, SubmitHandler, useForm } from 'react-hook-form'
+import { FieldError, SubmitHandler, useForm } from 'react-hook-form'
 import { Dropdown } from '../ui/Dropdown'
 import { locations, Venue, venueTypes } from '@/lib/db/models/Venue'
 import { TextInput } from '../ui/TextInput';
@@ -31,13 +31,13 @@ export const SubmitVenueForm = () => {
             <Dropdown label='LOCATION' options={locations} {..._register("location")} />
             <RadioSelect
                 label='IS THIS VENUE ALL AGES'
-                options={[{name: "yes", value: true}, {name: "no", value: false}]}
+                options={[{name: "yes", value: "true"}, {name: "no", value: "false"}]}
                 setValue={setValue}
                 {..._register("allAges")}
             />
             <RadioSelect
                 label='IS THIS VENUE DEFUNCT'
-                options={[{name: "yes", value: true}, {name: "no", value: false}]}
+                options={[{name: "yes", value: "true"}, {name: "no", value: "false"}]}
                 setValue={setValue}
                 {..._register("defunct")}
             />
