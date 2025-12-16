@@ -1,35 +1,58 @@
-import { ChangeEvent, useState } from "react"
-import { FieldError, UseFormSetValue } from "react-hook-form"
+import React from "react";
+import { ChangeEvent, useState } from "react";
+import { FieldError, UseFormRegister, UseFormSetValue } from "react-hook-form";
 
-interface RadioSelectProps<T> {
+interface RadioSelectProps {
     name: string;
     label: string;
-    options: {name: string, value: T}[];
-    initialValue?: T;
+    options: { name: string; value: string }[];
+    initialValue?: string;
     error?: FieldError;
     setValue: UseFormSetValue<any>;
     onChange: (e: ChangeEvent) => void;
 }
 
-export const RadioSelect = <T,>({ name, label, options, error, initialValue, setValue, onChange }: RadioSelectProps<T>) => {
-    const [selected, setSelected] = useState(initialValue)
+export const RadioSelect = React.forwardRef<
+    HTMLInputElement,
+    RadioSelectProps & ReturnType<UseFormRegister<any>>
+>(
+    (
+        {
+            name,
+            label,
+            options,
+            error,
+            initialValue,
+            setValue,
+            onChange,
+        }: RadioSelectProps,
+        ref
+    ) => {
+    const [selected, setSelected] = useState(initialValue);
 
-    const handleSelection = (e: ChangeEvent, value: T) => {
-        setSelected(value);
-        setValue(name, value);
+    const handleSelection = (e: ChangeEvent, value: string) => {
         onChange(e);
+        setValue(name, value);
+        setSelected(value);
     };
 
     return (
         <div>
-            <label htmlFor="isAllAges">{label}</label>
-            {options.map(option => (
+            <label htmlFor={name}>{label}</label>
+            {options.map((option) => (
                 <div key={option.name} className="flex">
-                    <input type="radio" checked={option.value === selected} onChange={(e) => handleSelection(e, option.value)} />
+                    <input
+                        name={name}
+                        value={option.value}
+                        type="radio"
+                        checked={option.value === selected}
+                        onChange={(e) => handleSelection(e, option.value)}
+                        ref={ref}
+                    />
                     {option.name}
                 </div>
             ))}
             {error && <span className="form-error">{error.message}</span>}
         </div>
-    )
-}
+    );
+});
