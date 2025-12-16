@@ -13,7 +13,7 @@ export const hash = async (password: string) => {
     });
 };
 
-export const verify = (password: string, hash: string) => {
+export const verify = async (password: string, hash: string) => {
     return new Promise((resolve, reject) => {
         const [salt, key] = hash.split(":");
         crypto.scrypt(password, salt, 64, (err, derivedKey) => {

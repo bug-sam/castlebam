@@ -1,6 +1,10 @@
 import { User, userSchema } from "@/lib/db/models/User";
 import { hash } from "@/lib/utils/encryptionUtils";
-import { insert } from "@/lib/utils/dbUtils";
+import { insert, getRow } from "@/lib/utils/dbUtils";
+
+export const getUser = async (username: string) => {
+    return getRow<User>("users", (u => u.username === username))
+}
 
 export const addUser = async (user: User) => {
     const { username, password, type } = userSchema.parse(user);
