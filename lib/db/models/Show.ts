@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { booleanString } from "./common";
 import { venueSchema } from "./Venue";
 
 export type Show = z.infer<typeof showSchema>;
@@ -8,6 +9,7 @@ export const baseShowSchema = z.object({
     date: z.string().date(),
     time: z.string().time(),
     cost: z.number(),
+    notaflof: booleanString,
     venue_id: z.string(),
     flyer: z.string(),
 });
