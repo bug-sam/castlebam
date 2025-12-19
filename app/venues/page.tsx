@@ -5,6 +5,8 @@
 // admins will have access to the list of submissions and they can accept them if they feel that they should be added to the site
 
 import { SubmitVenueForm } from "@/components/forms/VenueForm";
+import Rock from "@/components/ui/Rock";
+import { Venue } from "@/lib/db/models/Venue";
 import { useState } from "react";
 import useSWR from "swr";
 
@@ -28,47 +30,8 @@ const Venues = () => {
                 {isLoading ? (
                     <>loading...</>
                 ) : (
-                    data.map((venue: any) => (
-                        <div key={venue._id} className="flex flex-col items-center">
-                            {/* Rock Image Button */}
-                            <button
-                                className="rock-button"
-                                onClick={() => toggleVenue(venue._id)}
-                            >
-                                <img src="rock.png" />
-                            </button>
-
-                            {/* Venue Details */}
-                            {openVenueId === venue._id && (
-                                <div className="venue-details">
-                                    <p>
-                                        <strong>Name:</strong> {venue.name}
-                                    </p>
-                                    <p>
-                                        <strong>Location:</strong> {venue.location}
-                                    </p>
-                                    <p>
-                                        <strong>Instagram:</strong>{" "}
-                                        {venue.instagram}
-                                    </p>
-                                    <p>
-                                        <strong>Type:</strong> {venue.venueType}
-                                    </p>
-                                    <p>
-                                        <strong>All Ages:</strong>{" "}
-                                        {venue.isAllAges ? "Yes" : "No"}
-                                    </p>
-                                    <p>
-                                        <strong>Defunct:</strong>{" "}
-                                        {venue.isDefunct ? "Yes" : "No"}
-                                    </p>
-                                    <p>
-                                        <strong>Description:</strong>{" "}
-                                        {venue.description}
-                                    </p>
-                                </div>
-                            )}
-                        </div>
+                    data.map((venue: Venue) => (
+                        <Rock key={venue._id} data={venue}/>
                     ))
                 )}
             </div>
