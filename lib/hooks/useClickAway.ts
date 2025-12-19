@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 
-const useClickAway = <T extends HTMLElement>(ref: React.RefObject<T>, cb: () => void) => {
+const useClickAway = <T extends HTMLElement | null>(ref: React.RefObject<T>, cb: () => void) => {
     useEffect(() => {
         const listener = (e: MouseEvent) => {
-            if (!ref?.current.contains(e.target as Node)) {
+            if (!ref.current?.contains(e.target as Node)) {
                 cb();
             }
         };

@@ -7,7 +7,7 @@ interface RockProps {
 
 const Rock = ({data}: RockProps) => {
     const [isOpen, setIsOpen] = useState(false);
-    const ref = useRef<HTMLDivElement>(null);
+    const ref = useRef<HTMLDivElement | null>(null);
 
     useClickAway(ref, () => setIsOpen(false))
 
