@@ -1,0 +1,27 @@
+.tabs-container {
+}
+
+.tabs-headers {
+    display: flex;
+}
+
+.tab-header {
+    border-width: 3px;
+    border-style: outset;
+    border-bottom: 0px;
+
+    border-radius: 7px;
+
+    padding-left: 5px;
+    padding-right: 5px;
+
+    cursor: pointer;
+
+    &.selected {
+    }
+}
+
+.tabs-body {
+    border-width: 3px;
+    border-style: outset;
+}

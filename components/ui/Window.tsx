@@ -11,7 +11,7 @@ const Window = ({title, children }: WindowProps) => {
     return (
         <div className="window">
             <div className="window-title">{title}</div>
-            {children}
+            <div className="window-body">{children}</div>
         </div>
     )
 }
