@@ -7,19 +7,21 @@
 import { SubmitVenueForm } from "@/components/forms/VenueForm";
 import Rock from "@/components/ui/Rock";
 import { Venue } from "@/lib/db/models/Venue";
-import { useState } from "react";
 import useSWR from "swr";
 
 const Venues = () => {
-    const { data, error, isLoading } = useSWR("/api/venues", (url: string) => fetch(url).then((res) => res.json()));
+    const { data, error, isLoading } = useSWR("/api/venues", (url: string) =>
+        fetch(url).then((res) => res.json())
+    );
 
-    const [openVenueId, setOpenVenueId] = useState<number | null>(null);
-
-    const toggleVenue = (id: number) => {
-        setOpenVenueId((prev) => (prev === id ? null : id));
-    };
-
-    return (
+    return error ? (
+        <div>
+            Error:
+            <div>
+                {JSON.stringify(error)}
+            </div>
+        </div>
+    ) : (
         <div className="p-4 flex gap-12">
             <div className="w-1/2 min-h-[300px] max-w-xl">
                 <SubmitVenueForm />
@@ -31,7 +33,7 @@ const Venues = () => {
                     <>loading...</>
                 ) : (
                     data.map((venue: Venue) => (
-                        <Rock key={venue._id} data={venue}/>
+                        <Rock key={venue._id} data={venue} />
                     ))
                 )}
             </div>

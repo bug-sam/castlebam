@@ -22,7 +22,7 @@ const Rock = ({data}: RockProps) => {
             {isOpen && (
                 <div className="venue-details">
                     {Object.entries(data).map(([key, value]) => (
-                        <p>
+                        <p key={key}>
                             <strong>{key}</strong> {value}
                         </p>
                     ))}
