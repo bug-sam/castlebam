@@ -1,10 +1,15 @@
 import React, { ChangeEvent } from "react";
 import { FieldError, UseFormRegister } from "react-hook-form";
 
+interface DropdownOption {
+    name: string;
+    value: string;
+}
 interface DropdownInputProps {
     name: string;
     label: string;
-    options: string[];
+    options: DropdownOption[];
+    isLoading?: boolean;
     error?: FieldError;
     initialValue?: string;
     onSelect?: (option: string) => void;
@@ -20,44 +25,51 @@ export const Dropdown = React.forwardRef<
             name,
             label,
             options,
+            isLoading,
             error,
             initialValue,
             onSelect,
             onChange,
         }: DropdownInputProps,
         ref
-    ) => (
-        <div>
-            <label htmlFor="isAllAges">{label}</label>
-            <select
-                name={name}
-                defaultValue={initialValue || ""}
-                onChange={onChange}
-                ref={ref}
-            >
-                {initialValue || (
-                    <option
-                        value=""
-                        onClick={(e) =>
-                            onSelect && onSelect(e.currentTarget.value)
-                        }
+    ) => {
+        return (
+            <div>
+                <label htmlFor="isAllAges">{label}</label>
+                {isLoading ? (
+                    <>Loading...</>
+                ) : (
+                    <select
+                        name={name}
+                        defaultValue={initialValue || ""}
+                        onChange={onChange}
+                        ref={ref}
                     >
-                        select...
-                    </option>
+                        {initialValue || (
+                            <option
+                                value=""
+                                onClick={(e) =>
+                                    onSelect && onSelect(e.currentTarget.value)
+                                }
+                            >
+                                select...
+                            </option>
+                        )}
+                        {options && options.map((option) => (
+                            <option
+                                key={option.value}
+                                value={option.value}
+                                onClick={(e) =>
+                                    onSelect && onSelect(e.currentTarget.value)
+                                }
+                            >
+                                {option.name}
+                            </option>
+                        ))}
+                    </select>
                 )}
-                {options.map((option) => (
-                    <option
-                        key={option}
-                        value={option}
-                        onClick={(e) =>
-                            onSelect && onSelect(e.currentTarget.value)
-                        }
-                    >
-                        {option}
-                    </option>
-                ))}
-            </select>
-            {error && <span className="form-error">{error.message}</span>}
-        </div>
-    )
+                {error && <span className="form-error">{error.message}</span>}
+            </div>
+        );
+    }
 );

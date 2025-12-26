@@ -1,33 +1,38 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
-import { useEffect } from "react";
-
-const fetchShows = async () => {
-    const response = await fetch("/api/shows");
-    return await response.json();
-};
+import { SubmitShowForm } from "@/components/forms/ShowForm";
+import Rock from "@/components/ui/Rock";
+import { Show } from "@/lib/db/models/Show";
+import useSWR from "swr";
 
 const Shows = () => {
-    const { data, isLoading } = useQuery({
-        queryKey: ["shows-route-handler"],
-        queryFn: fetchShows,
-    });
+    const { data, error, isLoading } = useSWR<Show[]>("/api/shows", (url: string) =>
+        fetch(url).then((res) => res.json())
+    );
 
-    useEffect(() => {
-        console.log(data);
-    }, [data]);
-
-    return (
+    return error ? (
         <div>
-            <div>Shows :)</div>
-            <p>
-                This is the page that shows upcoming shows!! :) users can also
-                submit their own shows and people can smile them people should
-                eventually be able to sort/filter based on date would also be
-                cool if we could store flyers and have an archive of those as
-                well
-            </p>
+            Error:
+            <div>
+                {JSON.stringify(error)}
+            </div>
+        </div>
+    ) : (
+        <div className="p-4 flex gap-12">
+            <div className="w-1/2 min-h-[300px] max-w-xl">
+                <SubmitShowForm />
+            </div>
+
+            {/* Rocks */}
+            <div className="w-1/2 grid grid-cols-2 gap-6">
+                {isLoading ? (
+                    <>loading...</>
+                ) : (
+                    data?.map((show) => (
+                        <Rock key={show._id} data={show} />
+                    ))
+                )}
+            </div>
         </div>
     );
 };
