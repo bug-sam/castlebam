@@ -57,10 +57,6 @@ export const SubmitShowForm = () => {
                 options={data?.map(v => ({name: v.name, value: v._id!})) || []}
                 {..._register("venue")}
             />
-            <FileUpload
-                label="UPLOAD A FLYER FOR THIS SHOW"
-                {..._register("flyer")}
-            />
             <button type="submit">Submit</button>
         </form>
     );
