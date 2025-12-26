@@ -23,3 +23,7 @@
     flex-direction: column;
     justify-content: center;
 }
+
+.window-body {
+    padding: 10px;
+}
