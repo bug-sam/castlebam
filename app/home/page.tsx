@@ -1,8 +1,9 @@
 import Link from "next/link";
+import Window from "@/components/ui/Window";
 
 export default function Home() {
     return (
-        <div id="main1">
+        <Window title="Home">
             <div id="heading">
                 <p>
                     <span style={{ color: "blue" }}>CASTLEBAM</span>{" "}
@@ -64,6 +65,6 @@ export default function Home() {
             <div id="last_updated">
                 <p>UPDATED: APRIL 22 2025 BY DRAGON</p>
             </div>
-        </div>
+        </Window>
     );
 }

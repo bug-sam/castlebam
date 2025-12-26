@@ -1,0 +1,25 @@
+.window {
+    width: 70%;
+    max-height: 70%;
+
+    background-color: #c0c0c0;
+
+    border-width: 3px;
+    border-style: outset;
+
+    overflow: scroll;
+}
+
+.window-title {
+    height: 30px;
+    width: 100%;
+
+    padding-left: 5px;
+
+    background-color: #272973;
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
