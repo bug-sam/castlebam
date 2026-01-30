@@ -1,13 +1,12 @@
 .window {
     width: 70%;
-    max-height: 70%;
 
     background-color: #c0c0c0;
 
     border-width: 3px;
     border-style: outset;
 
-    overflow: scroll;
+
 }
 
 .window-title {
@@ -26,4 +25,9 @@
 
 .window-body {
     padding: 10px;
+
+    height: 85vh;
+
+    overflow: auto;
+    scrollbar-color: #818181 #c0c0c0;
 }
