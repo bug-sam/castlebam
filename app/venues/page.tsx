@@ -6,6 +6,8 @@
 
 import { SubmitVenueForm } from "@/components/forms/VenueForm";
 import Rock from "@/components/ui/Rock";
+import { Tabs, TabHeader, Tab, TabBody } from "@/components/ui/Tabs";
+import Window from "@/components/ui/Window";
 import { Venue } from "@/lib/db/models/Venue";
 import useSWR from "swr";
 
@@ -14,30 +16,40 @@ const Venues = () => {
         fetch(url).then((res) => res.json())
     );
 
-    return error ? (
-        <div>
-            Error:
-            <div>
-                {JSON.stringify(error)}
-            </div>
-        </div>
-    ) : (
-        <div className="p-4 flex gap-12">
-            <div className="w-1/2 min-h-[300px] max-w-xl">
-                <SubmitVenueForm />
-            </div>
-
-            {/* Rocks */}
-            <div className="w-1/2 grid grid-cols-2 gap-6">
-                {isLoading ? (
-                    <>loading...</>
-                ) : (
-                    data.map((venue: Venue) => (
-                        <Rock key={venue._id} data={venue} />
-                    ))
-                )}
-            </div>
-        </div>
+    return (
+        <Window title="Venues">
+            <Tabs>
+                <Tab id="see">
+                    <TabHeader>See Venues</TabHeader>
+                    <TabBody>
+                        {error ? (
+                            <div>
+                                Error:
+                                <div>{JSON.stringify(error)}</div>
+                            </div>
+                        ) : (
+                            <div className="p-4 flex gap-12">
+                                {isLoading ? (
+                                    <>loading...</>
+                                ) : (
+                                    data.map((venue: Venue) => (
+                                        <Rock key={venue._id} data={venue} />
+                                    ))
+                                )}
+                            </div>
+                        )}
+                    </TabBody>
+                </Tab>
+                <Tab id="add">
+                    <TabHeader>Add a Venue</TabHeader>
+                    <TabBody>
+                        <div className="w-1/2 min-h-[300px] max-w-xl">
+                            <SubmitVenueForm />
+                        </div>
+                    </TabBody>
+                </Tab>
+            </Tabs>
+        </Window>
     );
 };
 

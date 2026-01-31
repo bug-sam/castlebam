@@ -1,0 +1,52 @@
+.tabs-container {
+}
+
+.tabs-headers {
+    height: 35px;
+
+    display: flex;
+    align-items: flex-end;
+
+    margin-left: 5px;
+    margin-right: 5px;
+
+}
+
+.tab-header, :before {
+    border-style: inset;
+    border-bottom: 3px;
+}
+
+.tab-header, :after {
+    border-style: inset;
+    border-bottom: 3px;
+}
+
+.tab-header {
+    border-width: 3px;
+    border-style: outset;
+    border-bottom: 0px;
+
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+
+    padding-left: 5px;
+    padding-right: 5px;
+
+    cursor: pointer;
+
+    &.selected {
+        z-index: 1;
+
+        height: 30px;
+
+        padding-left: 7px;
+        padding-right: 7px;
+    }
+}
+
+
+.tabs-body {
+    border-width: 3px;
+    border-style: outset;
+}

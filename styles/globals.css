@@ -256,3 +256,11 @@ button {
     font-size: 0.875rem;
     text-align: center;
 }
+
+.desktop {
+    background-color: #068081;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
